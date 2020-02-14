@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "Actors Show Page" do
   it "can see actor info and the movies they are in" do
-    movie_1 = Movie.create(name: "Harry Potter")
+    studio_1 = Studio.create!(name: "Warner Brothers")
+    movie_1 = Movie.create!(name: "Harry Potter",
+                            studio: studio_1)
     actor_1 = Actor.create!(name: "Daniel Radcliffe",
-                          age: "16",
-                          movies: movie_1)
+                          age: "16")
 
     visit "/actors/#{actor_1.id}"
 
