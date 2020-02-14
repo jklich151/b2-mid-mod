@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200214173638) do
+ActiveRecord::Schema.define(version: 20200214175445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 20200214173638) do
   create_table "actors", force: :cascade do |t|
     t.string "name"
     t.string "age"
+    t.bigint "movie_id"
+    t.index ["movie_id"], name: "index_actors_on_movie_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -25,7 +27,9 @@ ActiveRecord::Schema.define(version: 20200214173638) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "actor_id"
+    t.bigint "studio_id"
     t.index ["actor_id"], name: "index_movies_on_actor_id"
+    t.index ["studio_id"], name: "index_movies_on_studio_id"
   end
 
   create_table "studios", force: :cascade do |t|
@@ -36,6 +40,8 @@ ActiveRecord::Schema.define(version: 20200214173638) do
     t.index ["movie_id"], name: "index_studios_on_movie_id"
   end
 
+  add_foreign_key "actors", "movies"
   add_foreign_key "movies", "actors"
+  add_foreign_key "movies", "studios"
   add_foreign_key "studios", "movies"
 end
