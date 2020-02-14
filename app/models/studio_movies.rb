@@ -1,3 +1,0 @@
-class StudioMovies < ApplicationRecord
-  
-end
