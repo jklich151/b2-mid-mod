@@ -7,7 +7,9 @@ RSpec.describe "Actors Show Page" do
                             studio: studio_1)
     actor_1 = Actor.create!(name: "Daniel Radcliffe",
                           age: "16")
+
     movie_1.actors << actor_1
+    actor_1.movies << movie_1
 
     visit "/actors/#{actor_1.id}"
 
