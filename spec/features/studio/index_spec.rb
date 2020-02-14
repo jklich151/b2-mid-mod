@@ -11,10 +11,10 @@ RSpec.describe "Studio Index Page" do
     movie_3 = Movie.create(name: "Sing")
     movie_4 = Movie.create(name: "SkyFall")
 
-    StudioMovie.create(studio: studio_1, movie: movie_1)
-    StudioMovie.create(studio: studio_1, movie: movie_2)
-    StudioMovie.create(studio: studio_2, movie: movie_3)
-    StudioMovie.create(studio: studio_3, movie: movie_4)
+    StudioMovies.create(studio: studio_1, movie: movie_1)
+    StudioMovies.create(studio: studio_1, movie: movie_2)
+    StudioMovies.create(studio: studio_2, movie: movie_3)
+    StudioMovies.create(studio: studio_3, movie: movie_4)
 
     visit "/studios"
 
